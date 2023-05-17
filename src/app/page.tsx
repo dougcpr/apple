@@ -15,8 +15,6 @@ const context = "create a bug report"
 
 const prompt = `Given the ${context}, and the comments ${extractedComments}, generate two sections. One as as summary and the other to identify the action items based on the questions or @ mentions. Don't show unspecified action items`
 
-console.log(prompt)
-
 function Home() {
   const [answer, setAnswer] = useState(undefined)
   const [loading, setLoading] = useState(false)
