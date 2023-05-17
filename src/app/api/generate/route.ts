@@ -1,4 +1,3 @@
-import {NextApiRequest, NextApiResponse} from "next";
 import {NextResponse} from "next/server";
 
 type OpenAIModel = {
@@ -13,14 +12,6 @@ type OpenAIModelMetaData = {
   permission: any;
 }
 
-type OpenAIRequest = NextApiRequest & OpenAIRequestBody
-
-type OpenAIRequestBody =  {
-  body: {
-    prompt: string
-  }
-}
-
 type OpenAIPayload = {
   model: string;
   prompt: string;
@@ -31,10 +22,9 @@ type OpenAIPayload = {
   max_tokens: number;
 }
 
-export async function POST(req: Request, res: NextApiResponse) {
+export async function POST(req: Request) {
 
   const { prompt } = await req.json();
-  console.log(prompt)
 
   const payload: OpenAIPayload = {
     model: "text-davinci-003",
@@ -57,6 +47,4 @@ export async function POST(req: Request, res: NextApiResponse) {
 
   const json: OpenAIModel = await response.json();
   return NextResponse.json(json);
-
-  // return NextResponse.json({choices: [{text: "Hello world"}]});
 }
