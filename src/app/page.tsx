@@ -2,9 +2,20 @@
 import React, {useState} from "react";
 import {commentThread, Comment} from "@/mockData";
 
-const prompt = `Take the JSON response ${JSON.stringify(commentThread)} and generate a summary.`
-// TODO: For training
-const completion = '';
+let extractedComments: any = []
+function extractCommentMetaData() {
+  commentThread.forEach((comment: Comment) => {
+    extractedComments.push(`${comment.author} said ${comment.comment}`)
+  })
+}
+
+extractCommentMetaData()
+
+const context = "create a bug report"
+
+const prompt = `Given the ${context}, and the comments ${extractedComments}, generate two sections. One as as summary and the other to identify the action items based on the questions or @ mentions. Don't show unspecified action items`
+
+console.log(prompt)
 
 function Home() {
   const [answer, setAnswer] = useState(undefined)
