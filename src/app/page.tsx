@@ -3,6 +3,12 @@ import React, {useState} from "react";
 import {commentThread, Comment} from "@/mockData";
 import styled from "styled-components";
 
+// Things to Consider:
+// Token Limit With Large Comment Thread
+// Time to Create Response was Between 5.5s - 9s
+// How many action items is too many? Can you prioritize?
+// Added functionality for creating a meeting and providing that context
+
 const SummaryContainer = styled.div`
   padding: 1rem;
   border: 1px solid;
@@ -12,8 +18,6 @@ const ActionItemsContainer = styled.div`
   padding: 1rem;
   border: 1px solid;
 `
-
-
 
 let extractedComments: any = []
 function extractCommentMetaData() {
