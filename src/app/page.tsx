@@ -77,8 +77,6 @@ function Home() {
           parsedActionItems.push(line.substring(2))
         }
       }
-      console.log(parsedSummary)
-      console.log(parsedActionItems)
       setSummary(parsedSummary)
       setActionItems(parsedActionItems)
     }
